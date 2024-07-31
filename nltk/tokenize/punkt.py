@@ -23,14 +23,14 @@ before it can be used.
 The NLTK data package includes a pre-trained Punkt tokenizer for
 English.
 
-    >>> import nltk.data
+    >>> from nltk.tokenize import PunktTokenizer
     >>> text = '''
     ... Punkt knows that the periods in Mr. Smith and Johann S. Bach
     ... do not mark sentence boundaries.  And sometimes sentences
     ... can start with non-capitalized words.  i is a good variable
     ... name.
     ... '''
-    >>> sent_detector = nltk.data.load('tokenizers/punkt/english.pickle')
+    >>> sent_detector = PunktTokenizer()
     >>> print('\n-----\n'.join(sent_detector.tokenize(text.strip())))
     Punkt knows that the periods in Mr. Smith and Johann S. Bach
     do not mark sentence boundaries.
@@ -1735,9 +1735,13 @@ class PunktSentenceTokenizer(PunktBaseClass, TokenizerI):
 
 
 class PunktTokenizer(PunktSentenceTokenizer):
+    """
+    Punkt Sentence Tokenizer that loads/saves its parameters from/to data files
+    """
 
-    #    def __init__(self, lang="english"):
-    #        self.load_lang(lang)
+    def __init__(self, lang="english"):
+        PunktSentenceTokenizer.__init__(self)
+        self.load_lang(lang)
 
     def load_lang(self, lang="english"):
         from nltk.data import find
@@ -1790,6 +1794,7 @@ def save_punkt_params(params, dir="/tmp/punkt_tab"):
 # Make a new Tokenizer
 #    tokenizer = PunktTokenizer(lang)
 #    return tokenizer
+
 
 DEBUG_DECISION_FMT = """Text: {text!r} (at offset {period_index})
 Sentence break? {break_decision} ({reason})
