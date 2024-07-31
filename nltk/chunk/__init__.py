@@ -181,7 +181,7 @@ def ne_chunk(chunker, tagged_tokens):
     return chunker.parse(tagged_tokens)
 
 
-def ne_chunk_sents(chunkers, tagged_sentences):
+def ne_chunk_sents(chunker, tagged_sentences):
     """
     Use chunker to chunk the given list of tagged sentences,
     each consisting of a list of tagged tokens.

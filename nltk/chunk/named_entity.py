@@ -1,7 +1,8 @@
 # Natural Language Toolkit: Chunk parsing API
 #
-# Copyright (C) 2001-2023 NLTK Project
+# Copyright (C) 2001-2024 NLTK Project
 # Author: Edward Loper <edloper@gmail.com>
+#         Eric Kafe <kafe.eric@gmail.com> (tab-format models)
 # URL: <https://www.nltk.org/>
 # For license information, see LICENSE.TXT
 
@@ -360,8 +361,8 @@ def build_model(fmt="multiclass"):
 
 """
 2004 update: pickles are not supported anymore.
-Deprecated:
 
+Deprecated:
 
 def build_model(fmt="binary"):
     print("Loading training data...")
@@ -398,7 +399,6 @@ def build_model(fmt="binary"):
         pickle.dump(cp, outfile, -1)
 
     return cp
-
 """
 
 if __name__ == "__main__":
